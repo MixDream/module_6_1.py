@@ -1,28 +1,24 @@
 class Animal:
+    alive = True  # Атрибут класса
+    fed = False   # Атрибут класса
+
     def __init__(self, name):
-        self.alive = True
-        self.fed = False
         self.name = name
+
+    def eat(self, food):
+        if food.edible:
+            print(f"{self.name} съел {food.name}")
+            Animal.fed = True
+        else:
+            print(f"{self.name} не стал есть {food.name}")
 
 
 class Mammal(Animal):
-
-    def eat(self, food):
-        if food.edible:
-            print(f"{self.name} съел {food.name}")
-            fed = True
-        else:
-            print(f"{self.name} не стал есть {food.name}")
+    pass
 
 
 class Predator(Animal):
-
-    def eat(self, food):
-        if food.edible:
-            print(f"{self.name} съел {food.name}")
-            fed = True
-        else:
-            print(f"{self.name} не стал есть {food.name}")
+    pass
 
 
 class Plant:
@@ -36,7 +32,9 @@ class Flower(Plant):
 
 
 class Fruit(Plant):
-    edible = True
+    def __init__(self, name):
+        super().__init__(name)
+        self.edible = True
 
 
 A1 = Predator('пьяный русский медведь')
